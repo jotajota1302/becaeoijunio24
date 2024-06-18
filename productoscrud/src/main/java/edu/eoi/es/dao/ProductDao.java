@@ -14,7 +14,7 @@ public class ProductDao {
 		
 	public void createProduct(Product product) throws SQLException {
 		
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/beca?serverTimezone=UTC", "root", "root");
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/beca?serverTimezone=UTC&useSSL=false", "root", "root");
 		
 		String sql="INSERT INTO productos (nombre,descripcion,precio,stock,categoria) VALUES (?,?,?,?,?)";
 		
