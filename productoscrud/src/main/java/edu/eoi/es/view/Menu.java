@@ -21,15 +21,7 @@ public class Menu {
 
 		switch (opcion) {
 		case 1:
-
-			// recuperar los datos por consola
-
-			Product product = new Product();
-			product.setName("TEST");
-			product.setDescription("DESRIPCION");
-			product.setPrice(100.0);
-			product.setStock(3);
-
+			Product product= readData();			
 			String response = productService.insertProduct(product);
 			System.out.println(response);
 			break;
@@ -39,6 +31,30 @@ public class Menu {
 		}
 
 		printMenu();
+	}
+	
+	@SuppressWarnings("resource")
+	public Product readData() {
+		
+		System.out.println("Introduce nombre:");	
+		
+		Scanner scan = new Scanner(System.in);
+		
+		String nombre=scan.next();
+		
+		System.out.println("Introduce descripcion:");			
+		scan = new Scanner(System.in);
+		
+		String descripcion=scan.next();
+		
+		Product product= new Product();
+		product.setName(nombre);
+		product.setDescription(descripcion);
+		product.setPrice(240.0);
+		product.setStock(2);
+		
+		return product;
+		
 	}
 
 }
