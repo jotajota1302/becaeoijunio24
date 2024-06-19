@@ -2,7 +2,7 @@ package edu.eoi.es.view;
 
 import java.util.Scanner;
 
-import edu.eoi.es.dto.Product;
+import edu.eoi.es.dto.ProductDto;
 import edu.eoi.es.service.ProductService;
 
 public class Menu {
@@ -21,7 +21,7 @@ public class Menu {
 
 		switch (opcion) {
 		case 1:
-			Product product= readData();			
+			ProductDto product= readData();			
 			String response = productService.insertProduct(product);
 			System.out.println(response);
 			break;
@@ -34,7 +34,7 @@ public class Menu {
 	}
 	
 	@SuppressWarnings("resource")
-	public Product readData() {
+	public ProductDto readData() {
 		
 		System.out.println("Introduce nombre:");	
 		
@@ -47,7 +47,7 @@ public class Menu {
 		
 		String descripcion=scan.next();
 		
-		Product product= new Product();
+		ProductDto product= new ProductDto();
 		product.setName(nombre);
 		product.setDescription(descripcion);
 		product.setPrice(240.0);

@@ -3,13 +3,13 @@ package edu.eoi.es.service;
 import java.sql.SQLException;
 
 import edu.eoi.es.dao.ProductDao;
-import edu.eoi.es.dto.Product;
+import edu.eoi.es.dto.ProductDto;
 
 public class ProductService {
 
 	private ProductDao dao= new ProductDao();
 
-	public String insertProduct(Product product) {
+	public String insertProduct(ProductDto product) {
 
 		try {
 			dao.create(product);

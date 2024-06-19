@@ -2,7 +2,7 @@ package edu.eoi.es.dto;
 
 import java.time.LocalDate;
 
-public class Product {
+public class ProductDto {
 	
 	private Integer id;
 	
@@ -84,7 +84,7 @@ public class Product {
 		this.updateDate = updateDate;
 	}
 
-	public Product(String name, String description, Double price, Integer stock, String category,
+	public ProductDto(String name, String description, Double price, Integer stock, String category,
 			LocalDate creationDate, LocalDate updateDate) {
 		super();
 		this.name = name;
@@ -96,7 +96,7 @@ public class Product {
 		this.updateDate = updateDate;
 	}
 
-	public Product() {
+	public ProductDto() {
 		super();
 	}
 	

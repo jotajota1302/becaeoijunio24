@@ -1,13 +1,14 @@
 package edu.eoi.es;
 
-import edu.eoi.es.view.Menu;
+import edu.eoi.es.dao.ProductDaoJpaImpl;
+import edu.eoi.es.entity.Product;
 
 public class App {
 
 	public static void main(String[] args) throws Exception {
 	
-		Menu menu= new Menu();
-		menu.printMenu();
+//		Menu menu= new Menu();
+//		menu.printMenu();
 		
 //		ProductDao dao= new ProductDao();
 //		
@@ -20,6 +21,12 @@ public class App {
 //		dao.updateProduct(p);
 		
 //		dao.deleteProduct(3);
+		
+		ProductDaoJpaImpl dao= new ProductDaoJpaImpl();
+		
+		Product producto = dao.read(1);
+		
+		System.out.println(producto.getName());
 		
 	}
 

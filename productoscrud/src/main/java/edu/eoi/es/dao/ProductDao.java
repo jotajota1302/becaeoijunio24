@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import edu.eoi.es.dto.Product;
+import edu.eoi.es.dto.ProductDto;
 
 //CRUD CREATE READ UPDATE DELETE
 public class ProductDao {
@@ -16,7 +16,7 @@ public class ProductDao {
 				"root");
 	}
 
-	public void create(Product product) throws SQLException {
+	public void create(ProductDto product) throws SQLException {
 	
 		Connection connection = getConnection();
 
@@ -36,10 +36,10 @@ public class ProductDao {
 
 	}
 
-	public Product read(int id) throws SQLException {
+	public ProductDto read(int id) throws SQLException {
 
 		Connection connection = getConnection();
-		Product product = null;
+		ProductDto product = null;
 
 		String sql = "SELECT id,nombre,descripcion,precio FROM productos WHERE ID=?";
 
@@ -50,7 +50,7 @@ public class ProductDao {
 
 		while (rs.next()) {
 
-			product = new Product();
+			product = new ProductDto();
 			product.setId(rs.getInt("id"));
 			product.setName(rs.getString("nombre"));
 			product.setDescription(rs.getString("descripcion"));
@@ -64,7 +64,7 @@ public class ProductDao {
 
 	}
 
-	public void update(Product product) throws Exception {
+	public void update(ProductDto product) throws Exception {
 
 		Connection connection = getConnection();
 
