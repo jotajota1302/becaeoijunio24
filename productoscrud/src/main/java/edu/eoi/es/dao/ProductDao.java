@@ -16,8 +16,8 @@ public class ProductDao {
 				"root");
 	}
 
-	public void createProduct(Product product) throws SQLException {
-
+	public void create(Product product) throws SQLException {
+	
 		Connection connection = getConnection();
 
 		String sql = "INSERT INTO productos (nombre,descripcion,precio,stock,categoria) VALUES (?,?,?,?,?)";
@@ -36,7 +36,7 @@ public class ProductDao {
 
 	}
 
-	public Product readProduct(int id) throws SQLException {
+	public Product read(int id) throws SQLException {
 
 		Connection connection = getConnection();
 		Product product = null;
@@ -64,7 +64,7 @@ public class ProductDao {
 
 	}
 
-	public void updateProduct(Product product) throws Exception {
+	public void update(Product product) throws Exception {
 
 		Connection connection = getConnection();
 
@@ -83,8 +83,8 @@ public class ProductDao {
 		connection.close();
 
 	}
-
-	public void deleteProduct(int id) throws SQLException {
+	
+	public void delete(int id) throws SQLException {
 
 		Connection connection = getConnection();
 

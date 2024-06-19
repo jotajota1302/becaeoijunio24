@@ -12,7 +12,7 @@ public class ProductService {
 	public String insertProduct(Product product) {
 
 		try {
-			dao.createProduct(product);
+			dao.create(product);
 		} catch (SQLException e) {
 			return "Error en la query a BBDD";
 		}
