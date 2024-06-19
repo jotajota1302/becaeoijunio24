@@ -1,6 +1,11 @@
 package edu.eoi.es;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+
+import edu.eoi.es.dao.ProductDao;
 import edu.eoi.es.dao.ProductDaoJpaImpl;
+import edu.eoi.es.dto.ProductDto;
 import edu.eoi.es.entity.Product;
 
 public class App {
@@ -9,12 +14,20 @@ public class App {
 	
 //		Menu menu= new Menu();
 //		menu.printMenu();
+					
+		Calendar cal1=Calendar.getInstance();
+			
+		ProductDao dao= new ProductDao();
 		
-//		ProductDao dao= new ProductDao();
-//		
-//		Product p= dao.readProduct(1);
-//		
-//		System.out.println(p.getName());
+		ProductDto p= dao.read(1);
+		
+		System.out.println(p.getName());
+		
+		Calendar cal2=Calendar.getInstance();
+		
+		 long tiempo = cal2.getTimeInMillis()-cal1.getTimeInMillis();
+		
+		System.out.println("ms : " + tiempo );
 //		
 //		p.setDescription("Nueva descripcion del producto 1");
 //		
@@ -22,11 +35,33 @@ public class App {
 		
 //		dao.deleteProduct(3);
 		
-		ProductDaoJpaImpl dao= new ProductDaoJpaImpl();
+		cal1=Calendar.getInstance();
 		
-		Product producto = dao.read(1);
+		ProductDaoJpaImpl dao2= new ProductDaoJpaImpl();
 		
-		System.out.println(producto.getName());
+		Product producto = dao2.read(1);	
+		
+		System.out.println(producto.getName());	
+		
+		cal2=Calendar.getInstance();
+		
+		tiempo = cal2.getTimeInMillis()-cal1.getTimeInMillis();		
+
+		System.out.println("ms JPA: " + tiempo);
+		
+		cal1=Calendar.getInstance();
+		
+		dao2= new ProductDaoJpaImpl();
+		
+		producto = dao2.read(4);	
+		
+		System.out.println(producto.getName());	
+		
+		cal2=Calendar.getInstance();
+		
+		tiempo = cal2.getTimeInMillis()-cal1.getTimeInMillis();		
+
+		System.out.println("ms JPA: " + tiempo);
 		
 	}
 
