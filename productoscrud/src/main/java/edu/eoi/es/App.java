@@ -3,7 +3,7 @@ package edu.eoi.es;
 import java.time.LocalDate;
 import java.util.Calendar;
 
-import edu.eoi.es.dao.ProductDao;
+import edu.eoi.es.dao.ProductDaoJdbcImpl;
 import edu.eoi.es.dao.ProductDaoJpaImpl;
 import edu.eoi.es.dto.ProductDto;
 import edu.eoi.es.entity.Product;
@@ -17,7 +17,7 @@ public class App {
 					
 		Calendar cal1=Calendar.getInstance();
 			
-		ProductDao dao= new ProductDao();
+		ProductDaoJdbcImpl dao= new ProductDaoJdbcImpl();
 		
 		ProductDto p= dao.read(1);
 		
@@ -53,7 +53,7 @@ public class App {
 		
 		dao2= new ProductDaoJpaImpl();
 		
-		producto = dao2.read(4);	
+		producto = dao2.read(2);	
 		
 		System.out.println(producto.getName());	
 		

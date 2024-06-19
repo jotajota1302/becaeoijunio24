@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import edu.eoi.es.dto.ProductDto;
 
 //CRUD CREATE READ UPDATE DELETE
-public class ProductDao {
+public class ProductDaoJdbcImpl {
 
 	private Connection getConnection() throws SQLException {
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/beca?serverTimezone=UTC&useSSL=false", "root",

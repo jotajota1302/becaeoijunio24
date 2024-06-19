@@ -2,12 +2,12 @@ package edu.eoi.es.service;
 
 import java.sql.SQLException;
 
-import edu.eoi.es.dao.ProductDao;
+import edu.eoi.es.dao.ProductDaoJdbcImpl;
 import edu.eoi.es.dto.ProductDto;
 
 public class ProductService {
 
-	private ProductDao dao= new ProductDao();
+	private ProductDaoJdbcImpl dao= new ProductDaoJdbcImpl();
 
 	public String insertProduct(ProductDto product) {
 
