@@ -25,6 +25,8 @@ public class App {
 		
 		daoJpaImpl.create(product);
 		
+//		daoJpaImpl.read(1);
+		
 //		Product p = daoJpaImpl.read(4);
 //		
 //		System.out.println(p.getDescription());
