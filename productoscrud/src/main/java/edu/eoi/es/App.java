@@ -1,8 +1,40 @@
 package edu.eoi.es;
 
+import edu.eoi.es.dao.ProductDaoJpaImpl;
+import edu.eoi.es.entity.Description;
+import edu.eoi.es.entity.Product;
+
 public class App {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {		
+		
+		
+		
+		ProductDaoJpaImpl daoJpaImpl=new ProductDaoJpaImpl();
+		
+		Product product=new Product();
+		product.setName("TEST");
+		product.setPrice(54.0);
+		product.setStock(3);
+		
+		Description description= new Description();		
+		description.setDescription("mi descripcion");
+		
+		product.setDescription(description);
+		description.setProduct(product);
+		
+		daoJpaImpl.create(product);
+		
+//		Product p = daoJpaImpl.read(4);
+//		
+//		System.out.println(p.getDescription());
+//		
+//		DescriptionDaoJpaImpl descriptionDaoJpaImpl= new DescriptionDaoJpaImpl();
+//		
+//		Description d = descriptionDaoJpaImpl.read(p.getDescription());
+//		
+//		System.out.println(d.getDescription());
+		
 	
 //		Menu menu= new Menu();
 //		menu.printMenu();
@@ -54,6 +86,9 @@ public class App {
 //		tiempo = cal2.getTimeInMillis()-cal1.getTimeInMillis();		
 //
 //		System.out.println("ms JPA: " + tiempo);
+		
+		
+		
 		
 	}
 

@@ -1,6 +1,7 @@
 package edu.eoi.es.entity;
 
-import javax.persistence.CascadeType;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,32 +9,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "productos", schema = "beca")
+@Table(name = "descripciones",schema = "beca")
 @Getter
 @Setter
-public class Product {
+public class Description {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private int id;
 	
-	@Column(name = "nombre")
-	private String name;
-
-	@OneToOne(mappedBy = "product",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	private Description description;
+	@Column(name="descripcion")
+	private String description;
 	
-	@Column(name = "precio")
-	private Double price;
-
-	@Column(name = "stock")
-	private Integer stock;
+	@Column(name = "usuario")
+	private String user;
+	
+	@Column(name = "fecha")
+	private Date date;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
+	private Product product;	
 	
 
 }
