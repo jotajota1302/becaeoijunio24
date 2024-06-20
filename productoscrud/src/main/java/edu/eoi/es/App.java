@@ -1,97 +1,53 @@
 package edu.eoi.es;
 
-import edu.eoi.es.dao.ProductDaoJpaImpl;
+import java.util.Arrays;
+import java.util.Date;
+
+import edu.eoi.es.dao.OrderDaoJpaImpl;
 import edu.eoi.es.entity.Description;
+import edu.eoi.es.entity.Order;
 import edu.eoi.es.entity.Product;
 
 public class App {
 
-	public static void main(String[] args) throws Exception {		
-		
-		
-		
-		ProductDaoJpaImpl daoJpaImpl=new ProductDaoJpaImpl();
-		
-		Product product=new Product();
-		product.setName("TEST");
-		product.setPrice(54.0);
-		product.setStock(3);
-		
-		Description description= new Description();		
-		description.setDescription("mi descripcion");
-		
-		product.setDescription(description);
-		description.setProduct(product);
-		
-		daoJpaImpl.create(product);
-		
-//		daoJpaImpl.read(1);
-		
-//		Product p = daoJpaImpl.read(4);
-//		
-//		System.out.println(p.getDescription());
-//		
-//		DescriptionDaoJpaImpl descriptionDaoJpaImpl= new DescriptionDaoJpaImpl();
-//		
-//		Description d = descriptionDaoJpaImpl.read(p.getDescription());
-//		
-//		System.out.println(d.getDescription());
-		
-	
-//		Menu menu= new Menu();
-//		menu.printMenu();
-					
-//		Calendar cal1=Calendar.getInstance();
-//			
-//		ProductDaoJdbcImpl dao= new ProductDaoJdbcImpl();
-//		
-//		ProductDto p= dao.read(1);
-//		
-//		System.out.println(p.getName());
-//		
-//		Calendar cal2=Calendar.getInstance();
-//		
-//		 long tiempo = cal2.getTimeInMillis()-cal1.getTimeInMillis();
-//		
-//		System.out.println("ms : " + tiempo );
-//		
-//		p.setDescription("Nueva descripcion del producto 1");
-//		
-//		dao.updateProduct(p);
-		
-//		dao.deleteProduct(3);
-		
-//		cal1=Calendar.getInstance();
-//		
-//		ProductDaoJpaImpl dao2= new ProductDaoJpaImpl();
-//		
-//		Product producto = dao2.read(1);	
-//		
-//		System.out.println(producto.getName());	
-//		
-//		cal2=Calendar.getInstance();
-//		
-//		tiempo = cal2.getTimeInMillis()-cal1.getTimeInMillis();		
-//
-//		System.out.println("ms JPA: " + tiempo);
-//		
-//		cal1=Calendar.getInstance();
-//		
-//		dao2= new ProductDaoJpaImpl();
-//		
-//		producto = dao2.read(2);	
-//		
-//		System.out.println(producto.getName());	
-//		
-//		cal2=Calendar.getInstance();
-//		
-//		tiempo = cal2.getTimeInMillis()-cal1.getTimeInMillis();		
-//
-//		System.out.println("ms JPA: " + tiempo);
-		
-		
-		
-		
+	public static void main(String[] args) throws Exception {
+
+		OrderDaoJpaImpl daoJpaImpl = new OrderDaoJpaImpl();
+
+		Order order = new Order();
+		order.setCode("ORDER123");
+
+		Product product1 = new Product();
+		product1.setName("Product 1");
+		product1.setPrice(20.0);
+		product1.setStock(5);
+
+		Description description1 = new Description();
+		description1.setDescription("Description for Product 1");
+		description1.setDate(new Date());
+		description1.setUser("user1");
+
+		product1.setDescription(description1);
+		description1.setProduct(product1);
+		product1.setOrder(order);
+
+		Product product2 = new Product();
+		product2.setName("Product 2");
+		product2.setPrice(15.0);
+		product2.setStock(10);
+
+		Description description2 = new Description();
+		description2.setDescription("Description for Product 2");
+		description2.setDate(new Date());
+		description2.setUser("user2");
+
+		product2.setDescription(description2);
+		description2.setProduct(product2);
+		product2.setOrder(order);
+
+		order.setProducts(Arrays.asList(product1, product2));
+
+		daoJpaImpl.create(order);
 	}
 
 }
