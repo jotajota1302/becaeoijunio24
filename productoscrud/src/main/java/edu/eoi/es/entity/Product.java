@@ -14,11 +14,13 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "productos", schema = "beca")
 @Getter
 @Setter
+@ToString(exclude = "description")
 public class Product {
 	
 	@Id

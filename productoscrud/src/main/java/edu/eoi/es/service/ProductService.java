@@ -1,23 +1,20 @@
 package edu.eoi.es.service;
 
-import java.sql.SQLException;
 
-import edu.eoi.es.dao.ProductDaoJdbcImpl;
-import edu.eoi.es.dto.ProductDto;
+
+import edu.eoi.es.dao.ProductDaoJpaImpl;
+import edu.eoi.es.entity.Product;
 
 public class ProductService {
 
-	private ProductDaoJdbcImpl dao= new ProductDaoJdbcImpl();
+//	private ProductDaoJdbcImpl dao= new ProductDaoJdbcImpl();
+	
+	private ProductDaoJpaImpl dao= new ProductDaoJpaImpl();
 
-	public String insertProduct(ProductDto product) {
+	
+	public Product findProduct(int id) {
 
-		try {
-			dao.create(product);
-		} catch (SQLException e) {
-			return "Error en la query a BBDD";
-		}
-
-		return "El alta se ha realizado";
+		return dao.read(id);
 	}
 
 }
