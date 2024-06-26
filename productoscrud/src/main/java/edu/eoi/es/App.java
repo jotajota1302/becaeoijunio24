@@ -50,11 +50,16 @@ public class App {
 //
 //		daoJpaImpl.create(order);
 		
-		System.out.println("Te busco el producto " + args[0]);
+//		System.out.println("Te busco el producto " + args[0]);
+//		
+//		ProductService productService=new ProductService();
+//		
+//		System.out.println(productService.findProduct(7));
 		
-		ProductService productService=new ProductService();
+		Vehiculo vehiculo1= new Vehiculo(new MotorDiesel());
+		Vehiculo vehiculo2= new Vehiculo(new MotorGasolina());
+		Vehiculo vehiculo3= new Vehiculo(new MotorElectrico());
 		
-		System.out.println(productService.findProduct(7));
 	}
 
 }

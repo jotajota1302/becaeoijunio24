@@ -9,6 +9,8 @@ public class ProductDaoJpaImpl {
 
 	private EntityManager em = Persistence.createEntityManagerFactory("BECA_PU").createEntityManager();
 
+	
+	
 	public Product read(int id) {
 		return em.find(Product.class, id);
 	}
