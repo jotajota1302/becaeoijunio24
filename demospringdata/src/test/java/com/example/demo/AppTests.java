@@ -25,13 +25,13 @@ class AppTests {
 			
 		//CREATE
 //		
-		Product product= new Product();
-		product.setNombre("PRUEBA");
-		product.setPrecio(45.0);
-		product.setStock(4);
-		product.setFecha(Calendar.getInstance().getTime());
-		
-		productRepository.save(product);
+//		Product product= new Product();
+//		product.setNombre("PRUEBA");
+//		product.setPrecio(45.0);
+//		product.setStock(4);
+//		product.setFecha(Calendar.getInstance().getTime());
+//		
+//		productRepository.save(product);
 		
 		//READ
 				
@@ -73,9 +73,18 @@ class AppTests {
 //		
 //		System.out.println(productRepository.findByOrderByStockAsc());
 		
-		System.out.println(clientRepository.findByCiudad("Madrid"));
+//		System.out.println(clientRepository.findByCiudad("Madrid"));
 		
-		System.out.println(clientRepository.countByCiudad("Madrid"));
+//		System.out.println(clientRepository.countByCiudad("Madrid"));
+		
+		Client cliente= new Client();
+		cliente.setNif("23423423");
+		cliente.setNombre("JJ");
+		cliente.setContraseña("password");
+		
+		clientRepository.save(cliente);
+		
+		System.out.println(clientRepository.findById(1));
 		
 	}
 

@@ -4,9 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,31 +13,16 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Client {
+public class Client extends Person {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@Column
+	private String usuario;
 	
 	@Column
-	private String nif;
-	
-	@Column
-	private String nombre;
-	
-	@Column
-	private String apellidos;
-	
-	@Column
-	private String direccion;
+	private String contraseña;
 	
 	@Column
 	private Date fechaAlta;
 	
-	@Column
-	private Date fechaNacimiento;
-	
-	@Column
-	private String ciudad;
 	
 }
