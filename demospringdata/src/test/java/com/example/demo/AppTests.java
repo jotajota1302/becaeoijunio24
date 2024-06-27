@@ -1,16 +1,24 @@
 package com.example.demo;
 
+import java.util.Calendar;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Pageable;
 
 @SpringBootTest
 class AppTests {
 
 	@Autowired
 	ProductRepository productRepository;
+	
+	@Autowired
+	ClientRepository clientRepository;
 	
 	@Test
 	void myTest() {
@@ -21,6 +29,7 @@ class AppTests {
 		product.setNombre("PRUEBA");
 		product.setPrecio(45.0);
 		product.setStock(4);
+		product.setFecha(Calendar.getInstance().getTime());
 		
 //		productRepository.save(product);
 		
@@ -28,16 +37,15 @@ class AppTests {
 				
 		//OPTIONAL
 		
-		Optional<Product> producto=productRepository.findById(7);
+//		Optional<Product> producto=productRepository.findById(7);
 	
-		System.out.println(producto.get());
-		
-		
+//		System.out.println(producto.get());		
+
 		//UPDATE
 		
-		producto.get().setNombre("ACTUALIZO NOMBRE");
+//		producto.get().setNombre("ACTUALIZO NOMBRE");
 		
-		productRepository.save(producto.get());
+//		productRepository.save(producto.get());
 		
 //		producto.get().setId(0);
 		
@@ -46,7 +54,25 @@ class AppTests {
 		
 		//DELETE
 		
-		productRepository.deleteById(12);
+//		productRepository.deleteById(12);
+		
+		
+		//FIND ALL
+		
+//		List<Product> products = productRepository.findAll();	
+//		
+//		System.out.println(products);
+				
+		System.out.println(productRepository.findByStockGreaterThan(3));
+		
+		System.out.println(clientRepository.findByNif("AAAAAAA"));
+		
+		System.out.println(clientRepository.findByNombreAndApellidos("JJ","Jimenez"));
+	
+		System.out.println(productRepository.findByFechaIsNull());
+		
+		System.out.println(productRepository.findByOrderByStockAsc());
+		
 		
 	}
 

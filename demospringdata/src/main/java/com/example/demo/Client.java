@@ -7,34 +7,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
-@Table(name = "productos", schema = "beca")
+@Entity(name = "clientes")
 @Getter
 @Setter
 @ToString
-public class Product {
+public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column
+	private String nif;
+	
+	@Column
 	private String nombre;
 	
 	@Column
-	private double precio;
+	private String apellidos;
 	
 	@Column
-	private int stock;
+	private String direccion;
 	
 	@Column
-	private Date fecha;
+	private Date fechaAlta;
 	
+	@Column
+	private Date fechaNacimiento;
+	
+	@Column
+	private String ciudad;
 	
 }
