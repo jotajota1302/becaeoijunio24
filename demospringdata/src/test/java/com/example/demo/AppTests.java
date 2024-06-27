@@ -24,12 +24,12 @@ class AppTests {
 	void myTest() {
 			
 		//CREATE
-		
-		Product product= new Product();
-		product.setNombre("PRUEBA");
-		product.setPrecio(45.0);
-		product.setStock(4);
-		product.setFecha(Calendar.getInstance().getTime());
+//		
+//		Product product= new Product();
+//		product.setNombre("PRUEBA");
+//		product.setPrecio(45.0);
+//		product.setStock(4);
+//		product.setFecha(Calendar.getInstance().getTime());
 		
 //		productRepository.save(product);
 		
@@ -63,16 +63,16 @@ class AppTests {
 //		
 //		System.out.println(products);
 				
-		System.out.println(productRepository.findByStockGreaterThan(3));
-		
-		System.out.println(clientRepository.findByNif("AAAAAAA"));
-		
-		System.out.println(clientRepository.findByNombreAndApellidos("JJ","Jimenez"));
-	
-		System.out.println(productRepository.findByFechaIsNull());
-		
-		System.out.println(productRepository.findByOrderByStockAsc());
-		
+//		System.out.println(productRepository.findByStockGreaterThan(3));
+//		
+//		System.out.println(clientRepository.findByNif("AAAAAAA"));
+//		
+//		System.out.println(clientRepository.findByNombreAndApellidos("JJ","Jimenez"));
+//	
+//		System.out.println(productRepository.findByFechaIsNull());
+//		
+//		System.out.println(productRepository.findByOrderByStockAsc());
+//		
 		
 	}
 
