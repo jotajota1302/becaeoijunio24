@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,10 +14,39 @@ class AppTests {
 	
 	@Test
 	void myTest() {
+			
+		//CREATE
 		
-		System.out.println(productRepository.count());
-		System.out.println(productRepository.existsById(4));
-		System.out.println(productRepository.findAll());
+		Product product= new Product();
+		product.setNombre("PRUEBA");
+		product.setPrecio(45.0);
+		product.setStock(4);
+		
+//		productRepository.save(product);
+		
+		//READ
+				
+		//OPTIONAL
+		
+		Optional<Product> producto=productRepository.findById(7);
+	
+		System.out.println(producto.get());
+		
+		
+		//UPDATE
+		
+		producto.get().setNombre("ACTUALIZO NOMBRE");
+		
+		productRepository.save(producto.get());
+		
+//		producto.get().setId(0);
+		
+//		productRepository.save(producto.get());
+		
+		
+		//DELETE
+		
+		productRepository.deleteById(12);
 		
 	}
 
