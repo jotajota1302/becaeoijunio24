@@ -13,5 +13,7 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 	public Client findByNombreAndApellidos(String nombre, String apellidos);
 	
 	public List<Client> findByCiudad(String ciudad);
+	
+	public int countByCiudad(String ciudad);
 
 }

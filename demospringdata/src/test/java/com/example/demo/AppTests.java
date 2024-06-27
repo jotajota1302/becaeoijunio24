@@ -25,13 +25,13 @@ class AppTests {
 			
 		//CREATE
 //		
-//		Product product= new Product();
-//		product.setNombre("PRUEBA");
-//		product.setPrecio(45.0);
-//		product.setStock(4);
-//		product.setFecha(Calendar.getInstance().getTime());
+		Product product= new Product();
+		product.setNombre("PRUEBA");
+		product.setPrecio(45.0);
+		product.setStock(4);
+		product.setFecha(Calendar.getInstance().getTime());
 		
-//		productRepository.save(product);
+		productRepository.save(product);
 		
 		//READ
 				
@@ -73,7 +73,9 @@ class AppTests {
 //		
 //		System.out.println(productRepository.findByOrderByStockAsc());
 		
-		System.out.println(clientRepository.findByCiudad("Alicante"));
+		System.out.println(clientRepository.findByCiudad("Madrid"));
+		
+		System.out.println(clientRepository.countByCiudad("Madrid"));
 		
 	}
 
