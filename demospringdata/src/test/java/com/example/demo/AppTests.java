@@ -72,7 +72,8 @@ class AppTests {
 //		System.out.println(productRepository.findByFechaIsNull());
 //		
 //		System.out.println(productRepository.findByOrderByStockAsc());
-//		
+		
+		System.out.println(clientRepository.findByCiudad("Alicante"));
 		
 	}
 
