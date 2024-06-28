@@ -20,6 +20,9 @@ class AppTests {
 	@Autowired
 	ClientRepository clientRepository;
 	
+	@Autowired
+	ProviderRepository providerRepository;
+	
 	@Test
 	void myTest() {
 			
@@ -85,6 +88,11 @@ class AppTests {
 		clientRepository.save(cliente);
 		
 		System.out.println(clientRepository.findById(1));
+		
+		Provider proveedor= new Provider();
+		proveedor.setCif("SFGSFGSDFDG");
+		
+		providerRepository.save(proveedor);
 		
 	}
 
