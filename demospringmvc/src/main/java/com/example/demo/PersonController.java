@@ -43,10 +43,12 @@ public class PersonController {
 	@PostMapping
 	public ResponseEntity<String> create(@RequestBody Person person) {
 
-		personService.save(person);
-		
-		return new ResponseEntity<String>(HttpStatus.CREATED);
-		
+		try {
+			personService.save(person);
+			return new ResponseEntity<String>(HttpStatus.CREATED);			
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}				
 	}
 
 	@DeleteMapping
@@ -54,8 +56,7 @@ public class PersonController {
 
 		personService.deleteAll();
 		
-		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
-		
+		return new ResponseEntity<String>(HttpStatus.ACCEPTED);		
 	}
 
 	@DeleteMapping("/{id}")
