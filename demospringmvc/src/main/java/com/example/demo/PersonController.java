@@ -3,6 +3,8 @@ package com.example.demo;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,42 +22,58 @@ public class PersonController {
 	PersonService personService;
 
 	@GetMapping
-	public List<Person> findAll() {
+	public ResponseEntity<List<Person>> findAll() {
 
-		return personService.findAll();
+		return ResponseEntity.ok(personService.findAll());
 	}
 
 	@GetMapping("/{id}")
-	public Person find(@PathVariable Integer id) {
+	public ResponseEntity<Person> find(@PathVariable Integer id) {
 
-		return personService.findPerson(id);
+		try {
+			Person p=personService.findPerson(id);
+			return new ResponseEntity<Person>(p,HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<Person>(HttpStatus.NOT_FOUND);
+		}
+		
 	}
 
 	@PostMapping
-	public void create(@RequestBody Person person) {
+	public ResponseEntity<String> create(@RequestBody Person person) {
 
 		personService.save(person);
+		
+		return new ResponseEntity<String>(HttpStatus.CREATED);
+		
 	}
 
 	@DeleteMapping
-	public void deleteAll() {
+	public ResponseEntity<String> deleteAll() {
 
 		personService.deleteAll();
+		
+		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+		
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id) {
+	public ResponseEntity<String> delete(@PathVariable Integer id) {
 
 		personService.delete(id);
+		
+		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 	}
 
 	@PutMapping("/{id}")
-	public void update(@RequestBody Person person, @PathVariable Integer id) {
+	public ResponseEntity<?> update(@RequestBody Person person, @PathVariable Integer id) {
 
 		if (id.equals(person.getId())) {
 			personService.save(person);
+			return new ResponseEntity<Person>(HttpStatus.BAD_REQUEST);
 		} else {
-			System.out.println("Bad Request");
+			return new ResponseEntity<String>(HttpStatus.CREATED);
 		}
 	}
 
