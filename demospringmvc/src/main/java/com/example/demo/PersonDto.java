@@ -19,5 +19,7 @@ public class PersonDto {
 	private String apellidos;
 	
 	private List<String> direcciones;
+	
+	private String postalCode;
 
 }

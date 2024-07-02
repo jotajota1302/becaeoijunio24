@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface PersonService {	
 	
-	public List<PersonDto> findAll();
+	public List<Person> findAll();
 	
 	public PersonDto findPerson(int id);
 

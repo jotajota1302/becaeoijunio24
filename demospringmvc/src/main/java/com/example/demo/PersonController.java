@@ -22,7 +22,7 @@ public class PersonController {
 	PersonService personService;
 
 	@GetMapping
-	public ResponseEntity<List<PersonDto>> findAll() {
+	public ResponseEntity<List<Person>> findAll() {
 
 		return ResponseEntity.ok(personService.findAll());
 	}

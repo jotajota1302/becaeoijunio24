@@ -17,45 +17,27 @@ public class PersonServiceImpl implements PersonService {
 		Person entity = personRepository.findById(id).get();
 		
 		PersonDto dto=new PersonDto();
-		dto.setApellidos(entity.getApellidos());
+		dto.setApellidos(entity.getApellidos().toUpperCase());
 		dto.setNif(entity.getNif());
-		dto.setNombre(entity.getNombre());
+		dto.setNombre(entity.getNombre().toUpperCase());
 		dto.setDirecciones(new ArrayList<String>());
+		dto.setPostalCode(entity.getCodigopostal());
 		
-		for (Address address : entity.getDirecciones()) {
-			
-			dto.getDirecciones().add(address.toString());
-		}		
+//		for (Address address : entity.getDirecciones()) {
+//			
+//			dto.getDirecciones().add(address.toString());
+//		}		
 			
 		return dto;
 		
 	}
 
 	@Override
-	public List<PersonDto> findAll() {
+	public List<Person> findAll() {
 	
-		List<PersonDto> personas= new ArrayList<PersonDto>();
+		 return personRepository.findAll();
+	
 		
-		List<Person> all = personRepository.findAll();
-		
-		for (Person person : all) {
-			
-			PersonDto dto=new PersonDto();
-			dto.setApellidos(person.getApellidos());
-			dto.setNif(person.getNif());
-			dto.setNombre(person.getNombre());
-			dto.setDirecciones(new ArrayList<String>());
-			
-			for (Address address : person.getDirecciones()) {
-				
-				dto.getDirecciones().add(address.toString());
-			}		
-			
-			personas.add(dto);	
-			
-		}	
-			
-		return personas;
 	}
 
 	@Override

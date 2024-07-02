@@ -24,8 +24,8 @@ public class Address {
 	
 	private String numero;
 	
-	@ManyToOne
-	private Person person;
+//	@ManyToOne
+//	private Person person;
 	
 	
 }

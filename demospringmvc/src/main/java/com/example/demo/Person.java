@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -34,11 +32,14 @@ public class Person {
 	@Column
 	private String apellidos;
 	
-	@OneToMany(targetEntity = Person.class)
-	private List<Address> direcciones;	
+//	@OneToMany(targetEntity = Person.class)
+//	private List<Address> direcciones;	
 	
 	@Column
 	private String ciudad;
+	
+	@Column
+	private String codigopostal;
 	
 
 
