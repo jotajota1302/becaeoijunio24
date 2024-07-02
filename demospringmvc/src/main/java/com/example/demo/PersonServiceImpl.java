@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +12,50 @@ public class PersonServiceImpl implements PersonService {
 	@Autowired
 	PersonRepository personRepository;	
 	
-	public Person findPerson(int id) {
+	public PersonDto findPerson(int id) {
 			
-		return personRepository.findById(id).get();
+		Person entity = personRepository.findById(id).get();
+		
+		PersonDto dto=new PersonDto();
+		dto.setApellidos(entity.getApellidos());
+		dto.setNif(entity.getNif());
+		dto.setNombre(entity.getNombre());
+		dto.setDirecciones(new ArrayList<String>());
+		
+		for (Address address : entity.getDirecciones()) {
+			
+			dto.getDirecciones().add(address.toString());
+		}		
+			
+		return dto;
 		
 	}
 
 	@Override
-	public List<Person> findAll() {
+	public List<PersonDto> findAll() {
 	
-		return personRepository.findAll();
+		List<PersonDto> personas= new ArrayList<PersonDto>();
+		
+		List<Person> all = personRepository.findAll();
+		
+		for (Person person : all) {
+			
+			PersonDto dto=new PersonDto();
+			dto.setApellidos(person.getApellidos());
+			dto.setNif(person.getNif());
+			dto.setNombre(person.getNombre());
+			dto.setDirecciones(new ArrayList<String>());
+			
+			for (Address address : person.getDirecciones()) {
+				
+				dto.getDirecciones().add(address.toString());
+			}		
+			
+			personas.add(dto);	
+			
+		}	
+			
+		return personas;
 	}
 
 	@Override

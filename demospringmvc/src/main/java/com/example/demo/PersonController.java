@@ -22,22 +22,22 @@ public class PersonController {
 	PersonService personService;
 
 	@GetMapping
-	public ResponseEntity<List<Person>> findAll() {
+	public ResponseEntity<List<PersonDto>> findAll() {
 
 		return ResponseEntity.ok(personService.findAll());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Person> find(@PathVariable Integer id) {
+	public ResponseEntity<PersonDto> find(@PathVariable Integer id) {
 
 		try {
-			Person p=personService.findPerson(id);
-			return new ResponseEntity<Person>(p,HttpStatus.OK);
-			
+			PersonDto p = personService.findPerson(id);
+			return new ResponseEntity<PersonDto>(p, HttpStatus.OK);
+
 		} catch (Exception e) {
-			return new ResponseEntity<Person>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<PersonDto>(HttpStatus.NOT_FOUND);
 		}
-		
+
 	}
 
 	@PostMapping
@@ -45,26 +45,30 @@ public class PersonController {
 
 		try {
 			personService.save(person);
-			return new ResponseEntity<String>(HttpStatus.CREATED);			
+			return new ResponseEntity<String>(HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}				
+		}
 	}
 
 	@DeleteMapping
 	public ResponseEntity<String> deleteAll() {
 
 		personService.deleteAll();
-		
-		return new ResponseEntity<String>(HttpStatus.ACCEPTED);		
+
+		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> delete(@PathVariable Integer id) {
 
-		personService.delete(id);
-		
-		return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+		try {
+			personService.delete(id);
+			return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@PutMapping("/{id}")

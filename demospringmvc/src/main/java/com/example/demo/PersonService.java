@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface PersonService {	
 	
-	public List<Person> findAll();
+	public List<PersonDto> findAll();
 	
-	public Person findPerson(int id);
+	public PersonDto findPerson(int id);
 
 	public void save(Person person);
 
