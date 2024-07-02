@@ -24,7 +24,7 @@ public class Address {
 	
 	private String numero;
 	
-	@ManyToOne(targetEntity = Person.class)
+	@ManyToOne
 	private Person person;
 	
 	
